@@ -2,7 +2,7 @@
  2 % 
 ;
 : isprime
- dup dup 2 / 1 + 2 do dup r@ % not if 1 + then loop = 
+ dup 1 - if dup dup 2 / 1 + 2 do dup r@ % not if 1 + then loop = else 0 *   then
 ;
 : alloc
  8 allot dup rot swap ! 
@@ -14,7 +14,7 @@
 : concat
  dup count
  rot dup count
- rot + 2 + heap-alloc dup >r -rot r> rot 
+ rot + 1 + heap-alloc dup >r -rot r> rot 
 stringcopying 1 - rot 
 stringcopying 0 swap c! * 0 * + 
 ;
