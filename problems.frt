@@ -9,15 +9,28 @@
 ;
 
 : stringcopying
- repeat dup c@ rot dup rot dup rot c! rot 1 + rot 1 + swap rot not until swap 
-;
+dup count
+>r dec r>
+inc 0
+do
+inc
+>r dup r@
+c@ swap r> r@ rot + swap >r c! r>
+loop
+heap-free ;
+
 : concat
- dup count
- rot dup count
- rot + 1 + heap-alloc dup >r -rot r> rot 
-stringcopying 1 - rot 
-stringcopying 0 swap c! * 0 * + 
-;
+swap dup count
+>r
+swap dup count
+r@ + inc
+heap-alloc
+rot stringcopying
+dup r> + rot
+stringcopying
+drop ;
+
+
 : isprimary
  dup isprime 
 if 0 * 1 + 
