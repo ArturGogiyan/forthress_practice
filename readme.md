@@ -3,8 +3,8 @@ Here is some information about written words.
 	isodd ( num -- bool )
 return 0 if the value is even, else 1.
 
-	isprime ( num -- bool )
-return 1 if the pushed number is prime, else 0.
+	isprime ( num -- addr )
+return address of a cell which concains 1 if the pushed number is prime,0 otherwise.
 	
 	alloc( value -- addr )
 allocate 8-bit memory location and write value into that.
